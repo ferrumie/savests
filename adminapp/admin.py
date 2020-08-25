@@ -5,7 +5,9 @@ from django.contrib.auth.admin import UserAdmin
 from django.utils.html import format_html
 from django.urls import path
 from . import views
-
+from django.shortcuts import render
+from .forms import SendEmailForm
+from django.core.mail import send_mail
 # Register your models here.
 
 class testUserAdmin(admin.StackedInline):
@@ -15,10 +17,11 @@ class testUserAdmin(admin.StackedInline):
 class CustomAdmin(UserAdmin):
     inlines = (testUserAdmin, )
     list_display = (
-        'id',
         'username',
+        'email',
         'is_active',
     )
+    change_list_template = 'admin/adminapp/change_list.html'
  
     def toggle_true(self, request, queryset):
         for i in queryset:
@@ -32,6 +35,10 @@ class CustomAdmin(UserAdmin):
         if not obj:
             return list()
         return super(CustomAdmin, self).get_inline_instances(request)
+
+    # def send_email(self, request, queryset):
+    #     form = SendEmailForm(initial={'users': queryset})
+    #     return render(request, 'admin/adminapp/send_email.html', {'form': form})
 
     admin.site.add_action(toggle_true, "Toggle Active User") 
     # admin.site.add_action(toggle_false, "Make User Inactive") 
