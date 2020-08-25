@@ -21,18 +21,19 @@ class CustomAdmin(UserAdmin):
     )
  
     def toggle_true(self, request, queryset):
-        queryset.update(is_active=True)
-
-    def toggle_false(self, request, queryset):
-        queryset.update(is_active = False)
-
+        for i in queryset:
+            if i.is_active == True:
+                queryset.update(is_active=False)
+            elif i.is_active == False:
+                queryset.update(is_active=True)
+                
 
     def get_inline_instances(self, request, obj=None):
         if not obj:
             return list()
         return super(CustomAdmin, self).get_inline_instances(request)
 
-    admin.site.add_action(toggle_true, "Make User Active") 
-    admin.site.add_action(toggle_false, "Make User Inactive") 
+    admin.site.add_action(toggle_true, "Toggle Active User") 
+    # admin.site.add_action(toggle_false, "Make User Inactive") 
 admin.site.unregister(User)
 admin.site.register(User, CustomAdmin)
