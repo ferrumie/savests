@@ -50,7 +50,12 @@ class SendUserEmails(FormView):
         subject = form.cleaned_data['subject']
         message = form.cleaned_data['message']
    #    email_users.delay(users, subject, message)
-        send_mail(subject, message, 'no-reply@djangointern.com', email,fail_silently=False)
+        send_mail(subject, message, 'no-reply@djangointern.com', email, fail_silently=False)
         user_message = 'users emailed successfully!'
         messages.success(self.request, user_message)
         return super(SendUserEmails, self).form_valid(form)
+
+def admin_view(request):
+    users = User.objects.all()
+    context = {'users':users}
+    return render(request, '/admin/dminapp/admin_index.html', context)

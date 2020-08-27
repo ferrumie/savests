@@ -17,20 +17,7 @@
 <p>{% blocktrans %}Write your message here{% endblocktrans %}</p>
 <form method="POST" action="{% url 'email' %}">{% csrf_token %}
     <div>
-        <div>
-            <p>{{ form.users.errors }}</p>
-            <p>{{ form.users.label_tag }}</p>
-            <p>
-                {% for user in form.users.initial %}
-                    {{ user.email }}{% if not forloop.last %},&nbsp;{% endif %}
-                {% endfor %}
-            </p>
-            <select name="users" multiple style="display: none">
-                {% for user in form.users.initial %}
-                    <option value="{{ user.id }}" selected>{{ user }}</option>
-                {% endfor %}
-            </select>
-        </div>
+        
         <div>
             <p>{{ form.subject.errors }}</p>
             <p>{{ form.subject.label_tag }}</p>
@@ -42,7 +29,7 @@
             <p>{{ form.message }}</p>
         </div>
         <input type="submit" value="{% trans 'Send message' %}" />
-        <a href="{% url 'admin:auth_user_changelist' %}"class="button cancel-link">{% trans "No, take me back" %}</a>
+        <a href="{% url 'admin:auth_user_changelist' %}"class="button cancel-link">{% trans "Go Back" %}</a>
     </div>
 </form>
 {% endblock %}

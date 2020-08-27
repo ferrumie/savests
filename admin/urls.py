@@ -16,9 +16,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from adminapp.views import SendUserEmails
+from adminapp.admin import admin
 
 urlpatterns = [
-    path('admin/', admin.site.urls, name="admin"),
+    path('admin/', admin.urls, name="admin"),
     #path('', include('adminapp.urls'))
     path("email-users/", view=SendUserEmails.as_view(), name='email')
 ]
+
+
