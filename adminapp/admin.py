@@ -121,5 +121,6 @@ class CustomAdmin(UserAdmin):
     admin.add_action(toggle_true, "Toggle Active User") 
     # admin.site.add_action(toggle_false, "Make User Inactive") 
 # admin.unregister(User)
-
+admin.site_header = "Savests Admin Dashboard"
+admin.index_title = "Admin Metric "
 admin.register(User, CustomAdmin)
