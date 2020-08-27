@@ -8,16 +8,15 @@
 <div class="breadcrumbs">
 <a href="{% url 'admin:index' %}">{% trans 'Home' %}</a>
 &rsaquo; <a href="">{% trans "Users" %}</a>
-&rsaquo; <a href="">{% trans "Users" %}</a>
 &rsaquo; <span>Send email</span>
 </div>
 {% endblock %}
 
 {% block content %}
-<p>{% blocktrans %}Write your message here{% endblocktrans %}</p>
-<form method="POST" action="{% url 'email' %}">{% csrf_token %}
-    <div>
-        
+<p>{% blocktrans %}Email to all Users{% endblocktrans %}</p>
+<form method="POST" action="{% url 'email' %}">
+    {% csrf_token %}
+    <div>        
         <div>
             <p>{{ form.subject.errors }}</p>
             <p>{{ form.subject.label_tag }}</p>

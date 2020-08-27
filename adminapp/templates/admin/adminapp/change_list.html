@@ -1,11 +1,15 @@
 {% extends "admin/change_list.html" %}
 
 {% block content %}
-{{block.super}}
+{{block.super}} <!--
+    making sure the default template is rendered
+-->
+
+
 {% block object-tools %}
  {% endblock object-tools %}
- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+ <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous"> <!--Bootstrap cdn-->
 
- <center  class = "mb-3"><a href="{% url 'email' %}" class="button btn btn-primary"> <b> Send Mail to all Users</b></a></center>
+ <center  class = "mb-3"><a href="{% url 'email' %}" class="button btn btn-primary"> <b> Send Mail to all Users</b></a></center> <!--Mail Button-->
 
 {% endblock content %}

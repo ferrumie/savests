@@ -25,7 +25,7 @@ SECRET_KEY = '#!6c$elt%xy$h+3f@q3u2!vm8y=9#+bd-jio3qnddg^)03ss=+'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -37,7 +37,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # local apps
     'adminapp',
+
+    # dependencies
 ]
 
 MIDDLEWARE = [
@@ -118,6 +121,7 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+# Django console email settings
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 # Static files (CSS, JavaScript, Images)
